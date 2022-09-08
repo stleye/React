@@ -18,11 +18,13 @@ function BookList() {
 }
 
 const Book = () => {
+  const title = "The great adventures of Sherlock Holmes"
+  const author = "Sir Arthur Conan Doyle"
   return (
     <article className="book">
       <img src="https://m.media-amazon.com/images/I/81woD8f1t7L._AC_UL640_FMwebp_QL65_.jpg" alt=""/>
-      <h1>The great adventures of Sherlock Holmes</h1>
-      <h4> Sir Arthur Conan Doyle </h4> 
+      <h1>{title}</h1>
+      <h4>{author}</h4> 
     </article>
   )
 }

@@ -5,7 +5,9 @@ import React, { useState, useEffect } from 'react';
 const UseEffectBasics = () => {
   const [value, setValue] = useState(0)
   useEffect(() => {
-    document.title = `New Messages(${value})` 
+    if (value > 0) {
+      document.title = `New Messages(${value})` 
+    }
   })
   return <>
     <h1>{value}</h1>

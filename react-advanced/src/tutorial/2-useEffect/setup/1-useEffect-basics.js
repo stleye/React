@@ -8,7 +8,12 @@ const UseEffectBasics = () => {
     if (value > 0) {
       document.title = `New Messages(${value})` 
     }
-  })
+  }, [value]) //it is called every time the dependency (value) changes, if we don't pass the array, it is called on render
+
+  useEffect(() => {
+    console.log('only called on initial render')
+  }, [])
+
   return <>
     <h1>{value}</h1>
     <button className='btn' onClick={() => setValue(value + 1)}>click me</button>

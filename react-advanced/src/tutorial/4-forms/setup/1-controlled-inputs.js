@@ -8,9 +8,17 @@ import React, { useState } from 'react';
 const ControlledInputs = () => {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
+  const [people, setPeople] = useState([])
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(firstName, email)
+    if (firstName && email) {
+      const person = { id: new Date().getTime().toString(), firstName, email} //the date is just a patch to make it work
+      setPeople((people) => {
+        return [...people, person]
+      })
+      setFirstName('')
+      setEmail('')
+    }
   }
   return (
     <>
@@ -24,9 +32,18 @@ const ControlledInputs = () => {
             <label htmlFor='email'>Email : </label>
             <input type='text' id='email' name='email' value={email} onChange={ (event) => setEmail(event.target.value)}/>
           </div>
-            <button type='submit'>add person</button>
-            {/* <button type='submit' onClick={handleSubmit}>add person</button> */}
+          <button type='submit'>add person</button>
+          {/* <button type='submit' onClick={handleSubmit}>add person</button> */}
         </form>
+        {
+        people.map((person) => {
+          const {id, firstName, email} = person
+          return <div className='item' key={id}>
+            <h4>{firstName}</h4>
+            <p>{email}</p>
+          </div>
+        })
+      }
       </article>
       </>
   )
